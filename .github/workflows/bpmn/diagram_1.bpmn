@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1es29as" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Zeebe Modeler" exporterVersion="0.8.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_1es29as" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Zeebe Modeler" exporterVersion="0.8.0">
   <bpmn:collaboration id="Collaboration_0l3uzwu">
-    <bpmn:participant id="Participant_1rfefsn" processRef="Process_0jhje13" />
+    <bpmn:participant id="Participant_1rfefsn" name="Test process" processRef="Process_0jhje13" />
   </bpmn:collaboration>
   <bpmn:process id="Process_0jhje13" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
@@ -14,10 +14,16 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0i9lwz8" sourceRef="Task_19wmcui" targetRef="EndEvent_12kley0" />
     <bpmn:serviceTask id="Task_0itq9zl" name="Task 1">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="1" retries="1" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0hk3lfu</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0md1adc</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_19wmcui" name="Task 2">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="2" retries="1" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0md1adc</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0i9lwz8</bpmn:outgoing>
     </bpmn:serviceTask>
